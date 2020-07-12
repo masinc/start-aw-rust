@@ -14,7 +14,8 @@ async fn main() -> io::Result<()> {
             .service(web::resource("/").to(hello))
             .service(web::resource("/{name}").to(hello))
     })
-    .bind("localhost:3000")?
+    .bind("localhost:3000")
+    .expect("Can not bind to port 3000")
     .run()
     .await
 }
