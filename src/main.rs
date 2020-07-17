@@ -1,10 +1,10 @@
 use std::io;
 
-use actix_web::{web, App, HttpRequest, HttpServer, Responder, Result};
+use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 
-async fn hello(req: HttpRequest) -> Result<impl Responder> {
+async fn hello(req: HttpRequest) -> impl Responder {
     let to = req.match_info().get("name").unwrap_or("World");
-    Ok(format!("Hello {}!", to))
+    format!("Hello {}!", to)
 }
 
 #[actix_rt::main]
